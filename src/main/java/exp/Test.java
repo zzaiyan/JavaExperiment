@@ -1,34 +1,40 @@
 package exp;
 
 public class Test {
-    public static String output = "";
+    public static void main(String[] args) {
+        Parent p = new Parent(1);
+        p.print();
+        p = new Child(1);
+        p.print();
 
-    public static void foo(int i) {
-        try {
-            if (i == 1) {
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            output += "2";
-            return;
-        } finally {
-            output += "3";
-//            System.out.println("finally");
-        }
-        output += "4";
+        String s1 = "hello" + "world";
+        String s2 = new String(s1);
+        System.out.println(s1 == s2);
+        System.out.println(s1.equals(s2));
+    }
+}
+
+class Parent {
+    int m;
+
+    public Parent(int x) {
+        System.out.println("Parent's constructor");
     }
 
-    public static void main(String[] args) {
-        foo(0);
-        foo(1);
-        System.out.println(output);
+    public void print() {
+        System.out.println("Parent");
+    }
+}
 
-//        int i = 100;
-        byte b = 20;
-        char c = 'c';
-        var x = b + c;
-        int i = b + c;
-        int i2 = 'c' + 1000;
-        System.out.println(i2);
+class Child extends Parent {
+    double m;
+
+    public Child(int x) {
+        super(x);
+        System.out.println("Child's constructor");
+    }
+
+    public void print() {
+        System.out.println("Child");
     }
 }
